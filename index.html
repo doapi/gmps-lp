@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+        <title>דף תרומה</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div class="hero-section">
+            <div class="container">
+                <div class="sidebar">
+                    <a class="donate-btn" onclick="openModal('main')">תרמו עכשיו</a>
+                    <div class="donation-options">
+                        <div class="donation-title">תרומה מהירה</div>
+                        <div class="donation-buttons">
+                            <a class="donation-btn" onclick="openModal('500')">₪ 500</a>
+                            <a class="donation-btn" onclick="openModal('360')">₪ 360</a>
+                            <a class="donation-btn" onclick="openModal('240')">₪ 240</a>
+                            <a class="donation-btn" onclick="openModal('180')">₪ 180</a>
+                            <a class="donation-btn" onclick="openModal('120')">₪ 120</a>
+                            <a class="donation-btn" onclick="openModal('other')">אחר</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <h1 class="header">תרום עכשיו ותמנע את הגירוש ב 19/07/2022</h1>
+
+                    <div class="banner">
+                        <img src="./video_img.png" alt="Family Campaign Banner">
+                        <!-- <div class="video-overlay"></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="sidebar" style="visibility: hidden; height: 0; padding: 0; margin: 0;"></div>
+            <div class="main-content">
+                <div class="content">
+                    <h2>גיוס סיוע דחוף. וכאן עדיין מדממים....</h2>
+
+                    <p>בית אדמה. נקטף מבטש. לפני כמעט שני חורפים. אבי/ה משפחת ז. את כל מה שהיה לה. יחד עם הגירוש האכזרי ממנו קיסף. נעים האמונו בנאשים. והתמודד הכח לתקום.</p>
+
+                    <p>בזיון ודממע. לא במקום. מיכים להישאר במקום. העירה צורית לעזרת הנפשות. מיתומים עקץ קטן. לפתוח בעמל כפיים את המשפחה הגדולה. ולהכות את חרופת העוני.</p>
+
+                    <p>אבל העיתיים חזקים מהם. הבית מאבד יציבות שלוות הנפש נעלמת. והאב קורס בקול רעש גדול.</p>
+
+                    <p>הנשים קולטים את הכאב. ראשונים. מתקשים לקרוא את חייהם. הבנים לא מוכנים על קני פרטיקול. חוששים על ציור שלי. ופיתי מהרחוו.</p>
+
+                    <div class="highlight">
+                        בימים אלו, 17 שנה לאחר הגירוש, עולה משפחת ז. על דרך חדשה, למצוא את עצמה ברחוב. להיות מגורשת
+                        מחדש מקורת הגג. וככל מה שנשאר הגיע.
+                    </div>
+
+                    <p>את הסיוע ממש קיטפו המסכן במופיע. את הסיוע הזה נחסום הרבה יותר בקלות!</p>
+
+                    <p>ב- 150,000 טמ נוכל להציב אותם על הקרקע. בהדרכה ישירה מלאים מכל מיני הגשים.</p>
+
+                    <p>התרומה שלך כאן. תמנע מהמשפחה גירוש מחלחל שעלול לרקוב אותה לחלוטין!</p>
+
+                    <p style="text-align: center">יהודי לא מגרש יהודי! - עכשיו זה הדיבוס שלך!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation Modal -->
+        <div id="donationModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <!-- <div class="form-group-wrapper" style="margin-top: 20px;"> -->
+
+                    <h3 style="text-align: center; margin-bottom: 20px;">סכום התרומה שלך</h3>
+
+                    <!-- Custom amount input (initially hidden) -->
+                    <div id="customAmountContainer" class="custom-amount">
+                        <input type="number" id="customAmount" placeholder="הזן סכום בש״ח" min="1">
+                    </div>
+
+                    <!-- Donation amount buttons -->
+                    <div id="donationAmountButtons" class="donation-amount-buttons">
+                        <button class="donation-amount-btn" data-amount="120">₪ 120</button>
+                        <button class="donation-amount-btn" data-amount="180">₪ 180</button>
+                        <button class="donation-amount-btn" data-amount="240">₪ 240</button>
+                        <button class="donation-amount-btn" data-amount="360">₪ 360</button>
+                        <button class="donation-amount-btn" data-amount="500">₪ 500</button>
+                        <button class="donation-amount-btn" data-amount="other">אחר</button>
+                    </div>
+                <!-- </div> -->
+                <form class="donation-form">
+                    <div class="form-group-wrapper" >
+
+                        <div class="form-group">
+                            <select id="payment-type" onchange="toggleMonthsSelector()">
+                                <option value="single">תשלום רגיל</option>
+                                <option value="monthly">תשלום חודשי (הוראת קבע)</option>
+                            </select>
+                        </div>
+
+                        <div id="months-container" class="form-group">
+                            <label for="months">מספר חודשים:</label>
+                            <select id="months" onchange="updateTotalAmount()">
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-wrapper">
+
+                        <div class="total-donation">
+                            <p>סה"כ תרומתך היא:</p>
+                            <p id="totalAmount" style="font-weight: bold; font-size: 18px;">₪ 0</p>
+                        </div>
+                    </div>
+                    <div class="form-group-wrapper">
+                        <div class="form-group">
+                            <label for="firstName">שם</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">שם משפחה</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">אימייל</label>
+                            <input type="email" id="email" required>
+                        </div>
+
+                        <div class="form-group" dir="rtl">
+                            <label for="phone">פלאפון</label>
+                            <input type="tel" id="phone">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">לתשלום</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+
+</html>
