@@ -139,8 +139,11 @@ body {
 
 /* Modal Styles */
 .modal {
+
     display: none;
     position: fixed;
+    overscroll-behavior: contain;
+    overflow-y: auto;
     top: 0;
     left: 0;
     width: 100%;
