@@ -40,40 +40,6 @@ function toggleMonthsSelector() {
     updateTotalAmount();
 }
 
-// Function to open the modal with selected amount
-function openModal(amount) {
-    modal.style.display = 'block';
-
-    // Reset all buttons to default state
-    const buttons = document.querySelectorAll('.donation-amount-btn');
-    buttons.forEach(btn => {
-        btn.classList.remove('selected');
-    });
-
-    // Hide custom amount input by default
-    customAmountContainer.style.display = 'none';
-    donationAmountButtons.style.display = 'flex';
-    
-    // Reset payment type to single
-    paymentTypeSelect.value = 'single';
-    toggleMonthsSelector();
-
-    if (amount === 'other') {
-        // Show custom amount input and hide buttons
-        customAmountContainer.style.display = 'block';
-        donationAmountButtons.style.display = 'none';
-        customAmountInput.focus();
-        // Select the "other" button
-        document.querySelector('.donation-amount-btn[data-amount="other"]').classList.add('selected');
-        selectedAmount = 0;
-    } else if (amount !== 'main') {
-        // Select the button with the specified amount
-        selectedAmount = parseInt(amount);
-        document.querySelector(`.donation-amount-btn[data-amount="${amount}"]`).classList.add('selected');
-    }
-
-    updateTotalAmount();
-}
 
 // Function to close the modal
 function closeModal() {
@@ -129,13 +95,6 @@ function updateTotalAmount() {
     let total = selectedAmount * numberOfMonths;
     totalAmountDisplay.textContent = `₪ ${total.toFixed(2)}`;
 }
-
-// Close the modal if clicked outside the modal content
-window.onclick = function (event) {
-    if (event.target === modal) {
-        closeModal();
-    }
-};
 
 // Add event listener for ESC key to close the modal
 document.addEventListener('keydown', function(event) {
